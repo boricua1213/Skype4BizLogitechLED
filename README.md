@@ -14,6 +14,6 @@ Devolped in Visual Studio 2017 using .NET. Clone repository, open project in Vis
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-*Michael Sorens for providing article on how to create system tray app. [Creating Tray Applications in .NET: A Practical Guide](https://www.simple-talk.com/dotnet/.net-framework/creating-tray-applications-in-.net-a-practical-guide/)
-*Ratko Cosic for providing article on getting Lync status from Lync SDK. [Availability (presence) in Lync Client](https://rcosic.wordpress.com/2011/11/17/availability-presence-in-lync-client/)
+* Michael Sorens for providing article on how to create system tray app. [Creating Tray Applications in .NET: A Practical Guide](https://www.simple-talk.com/dotnet/.net-framework/creating-tray-applications-in-.net-a-practical-guide/)
+* Ratko Cosic for providing article on getting Lync status from Lync SDK. [Availability (presence) in Lync Client](https://rcosic.wordpress.com/2011/11/17/availability-presence-in-lync-client/)
 *The community of [StackOverflow](https://stackoverflow.com)
