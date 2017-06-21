@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skype4BizLogitechLED", "Skype4BizLogitechLED\Skype4BizLogitechLED.csproj", "{CB9D925F-345F-409F-8E6A-2D5C25D3A007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutexManager", "MutexManager\MutexManager.csproj", "{1CF779C7-E3DD-427E-8075-C4F9989DAFAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB9D925F-345F-409F-8E6A-2D5C25D3A007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9D925F-345F-409F-8E6A-2D5C25D3A007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9D925F-345F-409F-8E6A-2D5C25D3A007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9D925F-345F-409F-8E6A-2D5C25D3A007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF779C7-E3DD-427E-8075-C4F9989DAFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF779C7-E3DD-427E-8075-C4F9989DAFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF779C7-E3DD-427E-8075-C4F9989DAFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF779C7-E3DD-427E-8075-C4F9989DAFAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
