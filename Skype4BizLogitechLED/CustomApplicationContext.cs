@@ -48,7 +48,8 @@ namespace Skype4BizLogitechLED
         {
             e.Cancel = false;
 
-            notifyIcon.ContextMenuStrip.Items.Add("Exit", null, ContextMenu_ExitClicked);
+            if (notifyIcon.ContextMenuStrip.Items.Count < 1)
+                notifyIcon.ContextMenuStrip.Items.Add("Exit", null, ContextMenu_ExitClicked);
         }
 
         private void ContextMenu_ExitClicked(object sender, EventArgs e)
