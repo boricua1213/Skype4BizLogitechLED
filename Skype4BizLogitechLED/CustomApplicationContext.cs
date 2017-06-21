@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Skype4BizLogitechLED
 {
+    /// <summary>
+    /// From https://www.simple-talk.com/dotnet/.net-framework/creating-tray-applications-in-.net-a-practical-guide/
+    /// </summary>
     public class CustomApplicationContext : ApplicationContext
     {
         private static readonly string IconFileName = "led.ico";
@@ -22,7 +25,6 @@ namespace Skype4BizLogitechLED
         public CustomApplicationContext()
         {
             InitializeContext();
-
         }
 
         private void InitializeContext()
