@@ -3,6 +3,7 @@ using Microsoft.Lync.Model;
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Skype4BizLogitechLED
@@ -48,8 +49,16 @@ namespace Skype4BizLogitechLED
         {
             e.Cancel = false;
 
-            if (notifyIcon.ContextMenuStrip.Items.Count < 1)
+            if (notifyIcon.ContextMenuStrip.Items.Count < 2)
+            {
+                notifyIcon.ContextMenuStrip.Items.Add("Reset", null, ContextMenu_ResetClicked);
                 notifyIcon.ContextMenuStrip.Items.Add("Exit", null, ContextMenu_ExitClicked);
+            }
+        }
+
+        private void ContextMenu_ResetClicked(object sender, EventArgs e)
+        {
+            SetupLyncLogitechLED();
         }
 
         private void ContextMenu_ExitClicked(object sender, EventArgs e)
@@ -59,7 +68,22 @@ namespace Skype4BizLogitechLED
 
         private void SetupLyncLogitechLED()
         {
-            lc = Microsoft.Lync.Model.LyncClient.GetClient();
+            try
+            {
+                if (lc == null)
+                {
+                    lc = Microsoft.Lync.Model.LyncClient.GetClient();
+                    lc.StateChanged += Lc_StateChanged;
+                }
+            }
+            catch (ClientNotFoundException ex)
+            {
+                MessageBox.Show("Skype for business is not running", "Program Terminated Unexpectedly",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                WaitTillLyncUp();
+            }
+
             if (lc.State == Microsoft.Lync.Model.ClientState.SignedIn)
             {
 
@@ -67,7 +91,42 @@ namespace Skype4BizLogitechLED
 
                 ContactAvailability availability = (ContactAvailability)lc.Self.Contact.GetContactInformation(ContactInformationType.Availability);
                 ChangeColor(availability);
+            }
 
+            
+        }
+
+        private int retryCount = 0;
+
+        private void WaitTillLyncUp()
+        {
+            Thread.Sleep(30000);
+            retryCount++;
+
+            try
+            {
+                lc = Microsoft.Lync.Model.LyncClient.GetClient();
+                lc.StateChanged += Lc_StateChanged;
+            }
+            catch (ClientNotFoundException ex)
+            {
+                if (retryCount < 20)
+                    WaitTillLyncUp();
+
+                return;
+            }
+
+            SetupLyncLogitechLED();
+        }
+
+        private void Lc_StateChanged(object sender, ClientStateChangedEventArgs e)
+        {
+            if (e.NewState == ClientState.SignedIn)
+            {
+                lc.Self.Contact.ContactInformationChanged += Contact_ContactInformationChanged;
+
+                ContactAvailability availability = (ContactAvailability)lc.Self.Contact.GetContactInformation(ContactInformationType.Availability);
+                ChangeColor(availability);
             }
         }
 
